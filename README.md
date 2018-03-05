@@ -1,0 +1,2 @@
+# AddSecurityExceptionAndroid
+Fork from levyitay/AddSecurityExceptionAndroid
