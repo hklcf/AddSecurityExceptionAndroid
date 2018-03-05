@@ -28,7 +28,7 @@ APKTOOL is not needed anymore.
 
 The script take two arguments: 
 1) APK file path.
-2) keystore file path (**optional** - Default is: ~/.android/debug.keystore )
+2) keystore file path (**optional** - Default is: debug.keystore )
 
 ### Examples
 
@@ -37,6 +37,6 @@ The script take two arguments:
 
 or
 
-./addSecurityExceptions.sh myApp.apk ~/.android/debug.keystore
+./addSecurityExceptions.sh myApp.apk debug.keystore
 
 ```
