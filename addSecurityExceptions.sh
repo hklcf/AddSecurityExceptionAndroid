@@ -18,7 +18,7 @@ filename=$(basename "$fullfile")
 extension="${filename##*.}"
 filename="${filename%.*}"
 new="_new.apk"
-apktool="apktool_2.3.3.jar"
+apktool="apktool_2.4.1.jar"
 newFileName=$filename$new
 tmpDir=/tmp/$filename
 
