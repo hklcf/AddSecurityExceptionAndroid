@@ -22,7 +22,7 @@ apktool="apktool_2.3.3.jar"
 newFileName=$filename$new
 tmpDir=/tmp/$filename
 
-java -jar $apktool d -f -o $tmpDir $fullfile
+java -jar $apktool d -f -s -o $tmpDir $fullfile
 
 if [ ! -d "$tmpDir/res/xml" ]; then
   mkdir $tmpDir/res/xml
