@@ -24,19 +24,19 @@ apktool="apktool_2.4.1.jar"
 newFileName=$filename$new
 tmpDir=/tmp/$filename
 
-java -jar "$DIR/$apktool" d -f -s -o $tmpDir $fullfile
+java -jar "$DIR/$apktool" d -f -s -o "$tmpDir" "$fullfile"
 
 if [ ! -d "$tmpDir/res/xml" ]; then
-  mkdir $tmpDir/res/xml
+  mkdir "$tmpDir/res/xml"
 fi
 
-cp "$DIR/network_security_config.xml" $tmpDir/res/xml/.
-if ! grep -q "networkSecurityConfig" $tmpDir/AndroidManifest.xml; then
-  sed -E "s/(<application.*)(>)/\1 android\:networkSecurityConfig=\"@xml\/network_security_config\" \2 /" $tmpDir/AndroidManifest.xml > $tmpDir/AndroidManifest.xml.new
-  mv $tmpDir/AndroidManifest.xml.new $tmpDir/AndroidManifest.xml
+cp "$DIR/network_security_config.xml" "$tmpDir/res/xml/."
+if ! grep -q "networkSecurityConfig" "$tmpDir/AndroidManifest.xml"; then
+  sed -E "s/(<application.*)(>)/\1 android\:networkSecurityConfig=\"@xml\/network_security_config\" \2 /" "$tmpDir/AndroidManifest.xml" > "$tmpDir/AndroidManifest.xml.new"
+  mv "$tmpDir/AndroidManifest.xml.new" "$tmpDir/AndroidManifest.xml"
 fi
 
-java -jar "$DIR/$apktool" empty-framework-dir --force $tmpDir
+java -jar "$DIR/$apktool" empty-framework-dir --force "$tmpDir"
 echo "Building new APK $newFileName"
-java -jar "$DIR/$apktool" b -o $newFileName $tmpDir
-jarsigner -verbose -keystore $debugKeystore -storepass android -keypass android $newFileName androiddebugkey
+java -jar "$DIR/$apktool" b -o "$newFileName" "$tmpDir"
+jarsigner -verbose -keystore $debugKeystore -storepass android -keypass android "$newFileName" androiddebugkey
